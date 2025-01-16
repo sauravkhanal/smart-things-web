@@ -1,0 +1,16 @@
+{
+	"name": "smart thing pwa",
+	"shor_name": "st",
+	"start_url": "index.html",
+    "display": "standalone",
+	"background_color": "#fdfdfd",
+	"theme_color": "#ff0000",
+	"orientation": "portrait-primary",
+	"icons": [
+		{
+			"src": "./assets/favicon.webp",
+			"type": "image/webp",
+			"sizes": "512x512"
+		}
+	]
+}
