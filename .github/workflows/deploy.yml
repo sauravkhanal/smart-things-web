@@ -1,4 +1,4 @@
-name: Deploy on ubuntu server
+name: Deploy on Ubuntu Server
 
 on:
     push:
@@ -6,23 +6,21 @@ on:
             - main
 
 jobs:
-    #1: push code into nginx server
     push-file-to-server:
-        name: Push static files into server
+        name: Push Static Files into Server
         runs-on: ubuntu-latest
 
         steps:
-            - name: checkout code
+            - name: Checkout Code
               uses: actions/checkout@v3
 
-            - name: setup SSH
+            - name: Setup SSH
               uses: webfactory/ssh-agent@v0.5.3
               with:
-                ssh-private-key: ${{secrets.SSH_PRIVATE_KEY}}
+                  ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-            - name: Deploy to server
+            - name: Deploy to Server
               run: |
-                    rsync -avz --delete --no-t -e "ssh -o StrictHostKeyChecking=no" \
-                    ./ \
-                    ${{vars.SERVER_USERNAME}}@${{vars.SERVER_IP}}:${{vars.DIR_PATH}}
-            
+                  rsync -avz --no-t -e "ssh -o StrictHostKeyChecking=no" \
+                  ./ \
+                  ${{ vars.SERVER_USERNAME }}@${{ vars.SERVER_IP }}:${{ vars.DIR_PATH }}
