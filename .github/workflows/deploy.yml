@@ -22,7 +22,7 @@ jobs:
 
             - name: Deploy to server
               run: |
-                    rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" \
+                    rsync -avz --delete --no-t -e "ssh -o StrictHostKeyChecking=no" \
                     ./ \
                     ${{vars.SERVER_USERNAME}}@${{vars.SERVER_IP}}:${{vars.DIR_PATH}}
             
