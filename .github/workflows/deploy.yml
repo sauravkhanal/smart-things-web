@@ -25,6 +25,6 @@ jobs:
                   echo "Deploying application"
                   cd ${{vars.DEPLOYMENT_DIR}}
                   sudo rm -rf ${{vars.REPO_NAME}}
-                  sudo git clone https://www.github.com/sauravkhanal/${{vars.REPO_NAME}}.git
+                  sudo git clone https://github.com/sauravkhanal/${{vars.REPO_NAME}}.git
                   echo "Deployment complete"
                   EOF
