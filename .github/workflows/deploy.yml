@@ -28,7 +28,7 @@ jobs:
                   echo "cd to ${{ vars.DEPLOYMENT_DIR }}"
                   cd ${{ vars.DEPLOYMENT_DIR }}
                   echo "Deleting ${{ vars.REPO_NAME }}"
-                  sudo rm -rf ${{ vars.REPO_NAME }}
-                  sudo git clone https://github.com/sauravkhanal/${{ vars.REPO_NAME }}.git
+                  sudo rm -rf smart-things-web
+                  sudo git clone https://github.com/sauravkhanal/smart-things-web.git
                   echo "Deployment complete"
                   EOF
