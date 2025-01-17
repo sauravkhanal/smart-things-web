@@ -21,10 +21,10 @@ jobs:
 
             - name: Runs commands on remote server
               run: |
-                  ssh -o StrictHostKeyChecking = no ${{ vars.SERVER_USERNAME }}@${{ vars.SERVER_IP }} 'bash -s' << 
+                  ssh -o StrictHostKeyChecking=no ${{ vars.SERVER_USERNAME }}@${{ vars.SERVER_IP }}  << 'EOF'
                   echo "Deploying application"
                   cd ${{vars.DEPLOYMENT_DIR}}
-                  sudo rm -r $${{vars.REPO_NAME}}
-                  sudo git clone https://www.github.com/sauravkhanal/$${{vars.REPO_NAME}}.git
+                  sudo rm -rf ${{vars.REPO_NAME}}
+                  sudo git clone https://www.github.com/sauravkhanal/${{vars.REPO_NAME}}.git
                   echo "Deployment complete"
                   EOF
