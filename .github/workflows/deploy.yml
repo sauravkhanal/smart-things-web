@@ -20,15 +20,17 @@ jobs:
               uses: webfactory/ssh-agent@v0.5.3
               with:
                   ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
+            
             - name: Runs commands on remote server
+              env:
+                  GH_TOKEN: ${{ secrets.PAT_TOKEN }}
               run: |
-                  ssh -o StrictHostKeyChecking=no ${{ vars.SERVER_USERNAME }}@${{ vars.SERVER_IP }} << 'EOF'
+                  ssh -o StrictHostKeyChecking=no ${{ vars.SERVER_USERNAME }}@${{ vars.SERVER_IP }} << EOF
                   echo "Deploying application"
                   echo "cd to ${{ vars.DEPLOYMENT_DIR }}"
                   cd ${{ vars.DEPLOYMENT_DIR }}
                   echo "Deleting ${{ vars.REPO_NAME }}"
                   sudo rm -rf ${{ vars.REPO_NAME }}
-                  sudo git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/sauravkhanal/${{ vars.REPO_NAME }}.git
+                  git clone https://${{ secrets.PAT_TOKEN }}@github.com/sauravkhanal/${{ vars.REPO_NAME }}.git
                   echo "Deployment complete"
                   EOF
