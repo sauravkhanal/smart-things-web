@@ -28,3 +28,9 @@ header {
     display: flex;
     justify-content: center;
 }
+
+footer {
+    text-decoration: none;
+    color: white;
+    opacity: 80;
+}
