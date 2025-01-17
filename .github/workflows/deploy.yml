@@ -19,8 +19,12 @@ jobs:
               with:
                   ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-            - name: Deploy to Server
+            - name: Runs commands on remote server
               run: |
-                  rsync -avz --no-t -e "ssh -o StrictHostKeyChecking=no" \
-                  ./ \
-                  ${{ vars.SERVER_USERNAME }}@${{ vars.SERVER_IP }}:${{ vars.DIR_PATH }}
+                  ssh -o StrictHostKeyChecking = no ${{ vars.SERVER_USERNAME }}@${{ vars.SERVER_IP }} 'bash -s' << 
+                  echo "Deploying application"
+                  cd ${{vars.DEPLOYMENT_DIR}}
+                  sudo rm -r $${{vars.REPO_NAME}}
+                  sudo git clone https://www.github.com/sauravkhanal/$${{vars.REPO_NAME}}.git
+                  echo "Deployment complete"
+                  EOF
