@@ -11,3 +11,23 @@ if ("sericeWroker" in navigator) {
 			);
 	});
 }
+
+let installationPromptEvent;
+
+window.addEventListener("beforeinstallprompt", (event) => {
+	event.preventDefault();
+	installationPromptEvent = event;
+
+	event.userChoice.then((result) => console.log(result.outcome));
+});
+
+document
+	.getElementById("installPromptBtn")
+	.addEventListener("click", (event) => {
+		console.log("Installatio prompt clicked");
+
+		if (installationPromptEvent) installationPromptEvent.prompt();
+		else {
+			alert("installation prompt not available ? ");
+		}
+	});
