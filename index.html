@@ -40,22 +40,32 @@
         </ul>
     </nav> -->
     <main>
-        <button class="">
-            Click me
-        </button>
-        <button id="installPromptBtn">Install me ?</button>
+        <section class="install-section">
+
+            <button id="installPromptBtn">Install me ?</button>
+        </section>
         <section class="button-section">
             <button id="play-button" class="play-button">Play</button>
             <button id="pause-button" class="pause-button">Pause</button>
             <button id="stop-button" class="stop-button">Stop</button>
-            <button id="fast-forward-button" class="fast-forward-button">Fast Forward</button>
-            <button id="rewind-button" class="rewind-button">Rewind</button>
+            <!-- <button id="fast-forward-button" class="fast-forward-button">Fast Forward</button> -->
+            <!-- <button id="rewind-button" class="rewind-button">Rewind</button> -->
             <button id="mute-button" class="mute-button">Mute</button>
             <button id="unmute-button" class="unmute-button">Unmute</button>
             <button id="switch-off-button" class="switch-off-button">Switch Off</button>
-            <button id="switch-on-button" class="switch-on-button">Switch On</button>
+            <!-- <button id="switch-on-button" class="switch-on-button">Switch On</button> -->
             <button id="pause-mute-button" class="pause-mute-button">Pause and mute</button>
+            <button id="mute-and-tv-button" class="mute-and-tv-button">Mute and change to TV, mode eco</button>
+            <button id="turn-off-5-15-button" class="turn-off-5-15-button">Turn off 5 times every 15 seconds</button>
+
         </section>
+        <dialog id="customDialog">
+            <div>
+                <p id="dialogMessage">This dialog will close automatically if not closed within 2 seconds.</p>
+                <button id="closeDialogBtn">Close</button>
+            </div>
+        </dialog>
+
     </main>
     <footer>
         ©<a href="https://khanalsaurav.com.np" target="_blank">khanalsaurav.com.np</a>

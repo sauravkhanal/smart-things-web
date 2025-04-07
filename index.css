@@ -11,7 +11,8 @@ body {
 	color: white;
 	font-family: "Poppins", serif;
 
-	height: 100%;
+	height: 100dvh;
+	width: 100dvw;
 	overflow: auto;
 
 	margin: 0;
@@ -24,6 +25,7 @@ body {
 
 main {
 	flex-grow: 1;
+	padding: 2rem;
 }
 
 header {
@@ -82,4 +84,18 @@ button:active {
 button:focus-visible {
 	outline: 3px solid #c7d2fe; /* Light indigo */
 	outline-offset: 2px;
+}
+
+dialog {
+	width: 300px;
+	padding: 20px;
+	border: none;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	text-align: center;
+}
+
+.install-section {
+	display: flex;
+	justify-content: center;
 }

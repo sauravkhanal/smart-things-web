@@ -1,5 +1,10 @@
 import { DEVICE_ID, DEVICE_KEY } from "./key.js";
-import { commands, helperFunctions } from "./helper.js";
+import {
+	commands,
+	helperFunctions,
+	openDialog,
+	runFunctionMultipleTimes,
+} from "./helper.js";
 
 const baseUrl = "https://api.smartthings.com/v1";
 
@@ -36,17 +41,52 @@ export const SmartThingsServices = {
 			// Check if the response is successful
 			if (response.ok) {
 				console.log("Command executed successfully.");
-				window.alert("Command executed successfully.");
+				openDialog("Command executed successfully.");
 			} else {
 				const errorData = await response.json();
 				console.error("Error occurred:", errorData);
-				window.alert(
+				openDialog(
 					`Failed: ${errorData?.message || "Unknown error"}`
 				);
 			}
 		} catch (error) {
 			console.error("An error occurred:", error);
-			window.alert(`Error: ${error.message}`);
+			openDialog(`Error: ${error.message}`);
+		} finally {
+			helperFunctions.finishLoading(buttonClassName); // Finish loading state
+		}
+	},
+	muteAndChangeSourceToTv: async (buttonClassName) => {
+		console.log("Command function triggered?");
+		const url = [
+			"https://api.smartthings.com/v1/scenes/6d0cd906-46bf-4b74-9d15-f6348e8c1c81/execute",
+		].join("/");
+
+		try {
+			helperFunctions.setLoading(buttonClassName); // Set loading state on button
+
+			const response = await fetch(url, {
+				method: "POST",
+				headers: {
+					Authorization: `Bearer ${DEVICE_KEY}`,
+					"Content-Type": "application/json",
+				},
+			});
+
+			// Check if the response is successful
+			if (response.ok) {
+				console.log("Command executed successfully.");
+				openDialog("Command executed successfully.");
+			} else {
+				const errorData = await response.json();
+				console.error("Error occurred:", errorData);
+				openDialog(
+					`Failed: ${errorData?.message || "Unknown error"}`
+				);
+			}
+		} catch (error) {
+			console.error("An error occurred:", error);
+			openDialog(`Error: ${error.message}`);
 		} finally {
 			helperFunctions.finishLoading(buttonClassName); // Finish loading state
 		}
@@ -88,5 +128,20 @@ document?.getElementById("pause-mute-button")?.addEventListener("click", () => {
 		commands.mute,
 	]);
 });
+document
+	?.getElementById("mute-and-tv-button")
+	?.addEventListener("click", () => {
+		SmartThingsServices.muteAndChangeSourceToTv("mute-and-tv-button");
+	});
+document
+	?.getElementById("turn-off-5-15-button")
+	?.addEventListener("click", () => {
+		runFunctionMultipleTimes(async() => {
+			return await SmartThingsServices.api("turn-off-5-15-button", [
+				commands.mute,
+				commands.switchOff,
+			]);
+		});
+	});
 
 window.SmartThingsServices = SmartThingsServices;

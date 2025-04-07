@@ -71,3 +71,44 @@ export const commands = {
 		arguments: [],
 	},
 };
+
+
+export async function runFunctionMultipleTimes(asyncFunc, interval = 15000, times = 5) {
+    let count = 0;
+    const intervalId = setInterval(async () => {
+        if (count < times) {
+            await asyncFunc(); // Wait for the async function to complete
+            count++;
+        } else {
+            clearInterval(intervalId); // Stop the interval after the specified number of executions
+        }
+    }, interval);
+}
+
+
+// Function to open the dialog with a custom message
+export function openDialog(message) {
+    const dialog = document.getElementById('customDialog');
+    const dialogMessage = document.getElementById('dialogMessage');
+    dialogMessage.textContent = message;
+    dialog.showModal(); // Display the dialog
+
+    // Set a timeout to close the dialog after 2 seconds
+    const timeoutId = setTimeout(() => {
+        dialog.close(); // Close the dialog
+        console.log('Dialog closed automatically after 2 seconds.');
+    }, 2000);
+
+    // Clear the timeout if the dialog is closed manually
+    dialog.addEventListener('close', () => {
+        clearTimeout(timeoutId);
+        console.log('Dialog closed manually.');
+    });
+}
+
+// Close the dialog when the close button is clicked
+document.getElementById('closeDialogBtn').addEventListener('click', () => {
+    const dialog = document.getElementById('customDialog');
+    dialog.close(); // Hide the dialog
+});
+
