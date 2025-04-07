@@ -1,3 +1,4 @@
+
 if ("sericeWroker" in navigator) {
 	window.addEventListener("load", function () {
 		this.navigator.serviceWorker
@@ -31,3 +32,9 @@ document
 			alert("installation prompt not available ? ");
 		}
 	});
+
+// document.getElementById("mute-button").addEventListener("click", async() => {
+// 	console.log("should work ? ")
+// 	await SmartThingsServices.mute("mute-button");
+
+// });

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hepeko?</title>
     <link rel="stylesheet" href="index.css">
-    <script src="index.js" defer></script>
+    <script src="index.js" defer type="module"></script>
     <link rel="icon" type="image/png" href="./assets/favicon.webp">
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,29 +19,48 @@
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
     <meta name="theme-color" content="#db4938" />
+    <script src="api.js" type="module" defer></script>
 </head>
 
 <body>
     <header>
         Control 96000 from your phone
     </header>
-    <nav>
+    <!-- <nav>
         <ul>
-            <li>Pause</li>
-            <li>Mute</li>
-            <li>Turn off</li>
+            <li><button id="play-button" class="play-button">Play</button></li>
+            <li><button id="pause-button" class="pause-button">Pause</button></li>
+            <li><button id="stop-button" class="stop-button">Stop</button></li>
+            <li><button id="fast-forward-button" class="fast-forward-button">Fast Forward</button></li>
+            <li><button id="rewind-button" class="rewind-button">Rewind</button></li>
+            <li><button id="mute-button" class="mute-button">Mute</button></li>
+            <li><button id="unmute-button" class="unmute-button">Unmute</button></li>
+            <li><button id="switch-off-button" class="switch-off-button">Switch Off</button></li>
+            <li><button id="switch-on-button" class="switch-on-button">Switch On</button></li>
         </ul>
-    </nav>
+    </nav> -->
     <main>
-        <button>
+        <button class="">
             Click me
         </button>
         <button id="installPromptBtn">Install me ?</button>
+        <section class="button-section">
+            <button id="play-button" class="play-button">Play</button>
+            <button id="pause-button" class="pause-button">Pause</button>
+            <button id="stop-button" class="stop-button">Stop</button>
+            <button id="fast-forward-button" class="fast-forward-button">Fast Forward</button>
+            <button id="rewind-button" class="rewind-button">Rewind</button>
+            <button id="mute-button" class="mute-button">Mute</button>
+            <button id="unmute-button" class="unmute-button">Unmute</button>
+            <button id="switch-off-button" class="switch-off-button">Switch Off</button>
+            <button id="switch-on-button" class="switch-on-button">Switch On</button>
+            <button id="pause-mute-button" class="pause-mute-button">Pause and mute</button>
+        </section>
     </main>
     <footer>
         ©<a href="https://khanalsaurav.com.np" target="_blank">khanalsaurav.com.np</a>
     </footer>
-    
+
 </body>
 
 </html>
